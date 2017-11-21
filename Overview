@@ -1,0 +1,19 @@
+Hello.
+
+The point of this Git repository is to improve upon our current system of implementing BYOX devices into our network.
+We have begun by recreating our existing .bat scripts in powershell. after this is complete we intend to attach these scripts
+to a GUI interface that is easy to use for users to create an almost autonomous solution.
+
+At this stage we have done the follwoing:
+
+The GUI has been created
+
+The first script, Wifi ADD, has been paritally recreated in powershell.
+
+The second script, Map Network Drives, has not been created
+
+The third script, Map Network Printers, has not been created
+
+
+
+Jordan Cartwright
