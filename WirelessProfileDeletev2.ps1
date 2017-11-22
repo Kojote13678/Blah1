@@ -18,6 +18,10 @@ function Get-WlanProfiles {
 
     $wlans | Select-String '\siDET'
     $wlans | Select-String '\sQDETA-X'
+
+    Write-Host ""
+    Write-Host ""
+    Write-Host ""
 }
 
 function Delete-WlanProfiles {
@@ -36,23 +40,32 @@ function Delete-WlanProfiles {
 
     $wlans | Write-Host
     
+    Write-Host ""
+    Write-Host ""
+    Write-Host ""
 }
 
 function Add-WlanProfiles {
     $wlans = netsh wlan show profiles
+
     if (-not($wlans | Select-String '\siDET')) {
-        netsh wlan add profile filename= "iDET.xml" user=Current
+        netsh wlan add profile filename="C:\Users\jcart285\OneDrive - Department of Education and Training\Powershell BYOX\iDET.xml" user=Current
     } else {
         Write-Output 'iDET exists, Delete_WlanProfiles did not run correctly.'
+        Break
+        Start-Sleep -Seconds 5
     }
     
     if (-not($wlans | Select-String '\sQDETA-X')) {
-        netsh wlan add profile filename= "QDETA-X.xml" user=Current
+        netsh wlan add profile filename="C:\Users\jcart285\OneDrive - Department of Education and Training\Powershell BYOX\QDETA-X.xml" user=Current
     } else {
         Write-Output 'QDETA-X exists, Delete_WlanProfiles did not run correctly.'
+        Break
+        Start-Sleep -Seconds 5
     } 
 
-    $wlans | Write-Host
+    Write-Host ""
+    Write-Host ""
 }
 
 Get-WlanProfiles
@@ -63,5 +76,7 @@ Start-Sleep -Seconds 3
 
 Add-WlanProfiles
 Start-Sleep -Seconds 3
+
+netsh wlan show profiles
 
 Stop-Transcript
